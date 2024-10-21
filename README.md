@@ -1,7 +1,8 @@
 # ZeoTap Weather Forescast
 
 ZeoTap Weather Forecast is a web application that provides users with accurate and up-to-date weather forecasting information. Built using Python and Flask, this application retrieves and displays weather data in an intuitive interface.
-
+# Result
+Open your web browser and go to `http://127.0.0.1:5000` to view the application.
 ## Features
 
 - View current weather conditions
@@ -49,7 +50,7 @@ To set up the project locally, follow these steps:
    python app.py
    ```
 
-5. Open your web browser and go to `http://127.0.0.1:5000` to view the application.
+
 
 ## Usage
 
