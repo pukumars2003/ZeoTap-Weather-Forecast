@@ -10,10 +10,17 @@ ZeoTap Weather Forecast is a web application that provides users with accurate a
 ## Features
 
 - View current weather conditions
+- Appealing and Animated UI
 - Access detailed weather forecasts
-- Deatiled Report
+- Detailed Report
 - Graph Vizualztion
-- Automatic 5 Minutes Scheduler 
+- table columns :- humidity, wind speed
+- Automatic 5 Minutes Scheduler
+- Calculated the daily aggregates in table:
+■ Average temperature
+■ Maximum temperature
+■ Minimum temperature
+■ Dominant weather condition
 - User-friendly interface
 - Data stored in a SQLite database
 
