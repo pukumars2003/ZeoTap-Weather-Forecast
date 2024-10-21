@@ -1,0 +1,388 @@
+<!DOCTYPE html><html lang="zxx">
+    <head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    
+    <!-- SITE TITLE -->
+    <title>ZeoTap: Weather Web App</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.png')}}" type="image/x-icon">
+    
+    <!-- Latest Bootstrap min CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css')}}">	
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&amp;family=Rajdhani:wght@400;500;600;700&amp;display=swap" rel="stylesheet">		
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.css') }}">
+    <!--- owl carousel Css-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/swiper.min.css') }}">
+    <!--magnific-popup Css-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }}">
+    <!--animate Css-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}">
+    <!--odometer.min Css-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slick.css') }}">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+</head>
+<body>
+        
+    <!-- Page Wrapper -->
+		<div class="page-wrapper">
+		
+			<!-- START PRELOADER -->
+			<div id="atf-loader">
+				<div id="atf-loading">
+					<div id="atf-loading-center">
+						<img src="{{ url_for('static', filename='images/weather.gif')}}" class="img-fluid" alt="weather">
+					</div>
+				</div>
+			</div>
+			<!-- END PRELOADER -->
+			
+			<!-- Back to Top Start -->
+			<a href="#" id="back_to_top" class=""><i class="fa fa-long-arrow-up"></i></a>
+			<!-- Back to Top End -->
+		
+			<!-- Start Header Section -->
+			<header class="atf-site-header atf-style1 atf-sticky-header">
+				<div class="atf-main-header">
+					<div class="container">
+						<div class="atf-main-header-in">
+							<div class="atf-main-header-left">
+								<h3 style="color: aliceblue;"><a href="index.html">ZeoTap</a></h3>
+							</div>
+							<div class="atf-main-header-right">
+								<div class="atf-nav">
+									<ul class="atf-nav-list">
+										<li class="menu-item-has-children"><a href="index.html">Home <i class="fa fa-chevron-down ms-1 arrow-btn f-13"></i></a>
+											<ul>
+												<li><a href="index.html">Home 1</a></li>
+												<li><a href="index1.html">Home 2</a></li>
+											</ul>
+										</li>
+										<li><a href="about.html">About</a></li>
+										<li><a href="climate.html">Climate change</a></li>
+										<li><a href="picture.html">Picture</a></li>
+										<li class="menu-item-has-children"><a href="blog.html">News <i class="fa fa-chevron-down ms-1 arrow-btn f-13"></i></a>
+											<ul>
+												<li><a href="blog.html">News</a></li>
+												<li><a href="blog-details.html">News Details</a></li>
+											</ul>
+										</li>
+										<li><a href="map.html">Map</a></li>
+										<li><a href="contact.html">Contact</a></li>
+										<li class="atf-menu-btn d-none d-lg-block">
+											<a href="#" class="atf-themes-btn"><span></span><span></span><span></span><span></span>Signup</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+			<!-- End Header Section -->
+		<!-- START HOME CLIP -->
+        <section id="home" class="atf-home-area atf-align-items-details atf-width-area" style="background-image: url({{ url_for('static', filename='images/1.jpg')}});background-size:cover; background-position: center center;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 pe-lg-5">
+                        <div class="atf-single-details text-start">
+                            <h2>ZeoTap <br>Weather Forcast Assignement</h2>
+                            <p class="border-left ps-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed <br> do elit eiusmod tempor incididunt ut labore et dolore.</p>
+
+                            <!-- Mailchamp-btn -->
+                            <div class="atf-search-area">
+                                <form class="form-group">
+                                    <input type="search" name="search" class="form-control" id="Search" placeholder="Search..." required="required">
+                                    <button type="submit" class="atf-themes-btn">
+                                    <span></span><span></span><span></span><span></span>Search now</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div><!--- END COL -->
+                    <div class="col-lg-6 mt-lg-40">                   
+    <div class="atf-weather swiper mySwiper">
+        <div class="swiper-wrapper">
+            {% for city, data in weather_data.items() %}
+            <div class="swiper-slide">
+                <div class="atf-hlight-content style1">
+                    <div class="d-flex">
+                        <div class="atf-weather-icon">
+                            <span class="text-white">
+                                <i class="fa-solid fa-cloud-sun-rain"></i> <!-- You can customize the icon based on conditions -->
+                            </span>
+                        </div>
+                        <div class="atf-weather-location">
+                            <h3 class="text-white">{{ city }}</h3>
+                            <span class="text-white"> Daily Weather</span>
+                        </div>
+                        <div class="atf-weather-deg">
+                            <h2 class="text-white">{{ data.avg_temp }} <sup>0</sup></h2>
+                        </div>
+                    </div>
+    
+                    <hr>
+    
+                    <div class="atf-sub-weather">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="d-inline-flex">
+                                    <div class="atf-weather-icon">
+                                        <span class="text-white">
+                                            <i class="fas fa-sun"></i>
+                                        </span>
+                                    </div>
+                                    <div class="atf-weather-location">
+                                        <h5 class="text-white">Humidity</h5>
+                                        <span class="text-white">{{ data.avg_humidity }}%</span>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="col-6">
+                                <div class="d-inline-flex">
+                                    <div class="atf-weather-icon">
+                                        <span class="text-white">
+                                            <i class="fa-solid fa-wind"></i>
+                                        </span>
+                                    </div>
+                                    <div class="atf-weather-location">
+                                        <h5 class="text-white">Wind</h5>
+                                        <p class="text-white">speed</p>
+                                        <span class="text-white">{{ data.avg_wind_speed }} km/h</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <hr>
+    
+                    <div class="atf-weather-sub-content text-center pt-2">
+                        <h5>Condition: {{ data.dominant_condition }}</h5>
+                    </div>
+                </div>
+            </div><!--- END SLIDER -->
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- START VIDEO -->
+<section id="video" class="atf-section-padding bg-f6">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-5 col-md-7 col-12 text-center">
+                <div class="atf-section-title wow fadeIn" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0" style="visibility: visible; animation-duration: 1s; animation-delay: 0.3s; animation-name: fadeIn;">
+                    <h5 class="sub-title">Don't Miss</h5>
+                    <h2 class="">Daliy Weather Forcast</h2>
+                    <p>Lorem ipsum dolor sit amet elit , consectetur adipiscing , sed eiusmod tempor sit amet elit dolor sit amet elit.</p>
+                    <canvas id="tempChart"></canvas>
+                </div>
+            </div><!--- END COL -->
+        </div><!--- END ROW -->
+          
+    </div><!--- END CONTAINER -->
+</section>
+<!-- END VIDEO -->
+ <!-- START WEEKLY FORCAAST -->
+ <section class="atf-weekly-forcast" style="background-image: url({{ url_for('static', filename='images/6.jpg')}});  background-size:cover; background-position: center center;">
+    <div class="atf-home-overlay atf-section-padding">
+        <div class="container">
+            <div class="row justify-content-start">
+                
+                    <div class="atf-section-title wow fadeIn" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
+                        <h5 class="sub-title">5 Minutes Report</h5>
+                        <h2 class="text-white">Weather Forcast</h2>
+                        
+                            <h1 class="text-center text-white">Weather Dashboard</h1>
+                            <table class="table table-striped text-white">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>City</th>
+                                        <th>Average Temperature (°C)</th>
+                                        <th>Max Temperature (°C)</th>
+                                        <th>Min Temperature (°C)</th>
+                                        <th>Dominant Condition</th>
+                                        <th>Average Humidity (%)</th>
+                                        <th>Average Wind Speed (m/s)</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-white">
+                                    {% for summary in summaries %}
+                                    <tr class="text-white">
+                                        <td class="text-white">{{ summary.date }}</td>
+                                        <td class="text-white">{{ summary.city }}</td>
+                                        <td class="text-white">{{ summary.avg_temp }}</td>
+                                        <td class="text-white">{{ summary.max_temp }}</td>
+                                        <td class="text-white">{{ summary.min_temp }}</td>
+                                        <td class="text-white">{{ summary.dominant_condition }}</td>
+                                        <td class="text-white">{{ summary.avg_humidity }}</td> <!-- New column for humidity -->
+                                        <td class="text-white">{{ summary.avg_wind_speed }}</td> <!-- New column for wind speed -->
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        
+                    </div>
+                </div><!--- END COL -->
+            </div><!--- END ROW -->
+        
+          			
+        </div><!--- END CONTAINER -->
+    </div>
+</section>
+<!-- END WEEKLY FORCAAST -->
+   <!-- FOOTER SECTION START-->
+   <footer id="footer" class="atf-footer-area">
+    <div class="container">
+        <div class="atf-section-padding">
+            <div class="row atf-mailchamp-border clearfix">
+                
+            </div><!--- END COL -->
+            
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="atf-footer-link">
+                        <div class="atf-footer-box pe-lg-5">
+                            <h5>About Company</h5>
+                            <p class="mt-3"> Zeotap: Easy, Secure & Impactful Customer Data Platform</p>
+                            <h4 class="text-white mt-3">Follow Us</h4>
+                            <div class="atf-footer-social-icon mt-3">
+                                <a href="#" class="icon"> <i class="fab fa-facebook"></i> </a>
+                                <a href="#" class="icon"> <i class="fab fa-dribbble"></i> </a>
+                                <a href="#" class="icon"> <i class="fab fa-behance"></i> </a>
+                                <a href="#" class="icon"> <i class="fab fa-linkedin"></i> </a>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--- END COL -->
+                
+                <div class="col-lg-2 col-md-6 col-6">
+                    <div class="atf-footer-link">
+                        <h5>Contact Us</h5>
+                        <ul class="atf-list-menu">
+                            <li><a href="#"><i class="fas fa-phone me-2"></i>17535470699</a></li>
+                            <li><a href="#"><i class="fa fa-envelope me-2"></i>info@zeotap.com</a></li>
+                            <li><a href="#"><i class="fa fa-location me-2"></i> IndiQube Epsilon, KGA Road, 91, GR Square, Domlur I Stage, Amarjyoti Layout, Domlur, Bengaluru, Karnataka 560071</a></li>
+                        </ul>
+                    </div>
+                </div><!--- END COL -->
+                
+                <div class="col-lg-2 col-md-6 col-6">
+                    <div class="atf-footer-link">
+                        <h5>Our Links</h5>
+                        <ul class="atf-list-menu">
+                            <li> <a href="#"><i class="fa fa-angle-right me-2"></i>Get Stared</a></li>
+                            <li> <a href="#"><i class="fa fa-angle-right me-2"></i>Our Team</a></li>
+                            <li> <a href="#"><i class="fa fa-angle-right me-2"></i>About Us</a></li>
+                            <li> <a href="privacy.html"><i class="fa fa-angle-right me-2"></i>Privacy &amp; Policy</a></li>
+                            <li> <a href="terms.html"><i class="fa fa-angle-right me-2"></i>Terms &amp; Condition</a></li>
+                        </ul>
+                    </div>
+                </div><!--- END COL -->
+                
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="atf-footer-link">
+                        <h5>Weather Map</h5>
+                        <!-- Google Map start-->
+                         <div class="atf-map-area">
+                            <iframe src="https://www.meteoblue.com/en/weather/maps/widget/basel_switzerland_2661604?windAnimation=0&amp;windAnimation=1&amp;gust=0&amp;gust=1&amp;satellite=0&amp;satellite=1&amp;cloudsAndPrecipitation=0&amp;cloudsAndPrecipitation=1&amp;temperature=0&amp;temperature=1&amp;sunshine=0&amp;sunshine=1&amp;extremeForecastIndex=0&amp;extremeForecastIndex=1&amp;geoloc=fixed&amp;tempunit=C&amp;windunit=km%252Fh&amp;lengthunit=metric&amp;zoom=5&amp;autowidth=auto"></iframe>
+                        </div>
+                    </div>
+                </div><!--- END COL -->
+            </div><!--- END ROW -->
+        </div>
+    </div><!--- END CONTAINER -->
+        
+    <div class="atf-footer-boottom text-center">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="atf-link">
+                    <p>Copyright - All Right Reserved.Designed <i class="fa fa-heart ms-1 me-1"></i> by <a href="">Ajay</a> </p>
+                </div><!--- END COL -->
+            </div><!--- END COL -->
+        </div><!--- END ROW -->
+    </div>
+</footer>
+<!-- FOOTER SECTION END-->	
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- In your dashboard.html file -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+        const ctx = document.getElementById('tempChart').getContext('2d');
+    const tempChart = new Chart(ctx, {
+        type: 'bar',  // Change to bar chart for better visualization
+        data: {
+            labels: {{ labels|tojson|safe }},
+            datasets: [{
+                label: 'Average Temperature (°C)',
+                data: {{ avg_temps|tojson|safe }},
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Temperature (°C)'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Cities'
+                    }
+                }
+            }
+        }
+    });
+    </script>
+    <!-- Latest jQuery -->
+		<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+		<!-- modernizer JS -->		
+		<script src="{{ url_for('static', filename='js/modernizr.custom.js') }}"></script>
+		<!-- Latest compiled and minified Bootstrap -->
+		<script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+		<!-- imagesloaded JS -->
+		<script src="{{ url_for('static', filename='js/imagesloaded.pkgd.js') }}"></script>	
+		<!-- owl-carousel min js  -->
+		<script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/swiper.min.js') }}"></script>
+		<!-- magnific-popup js -->	
+		<script src="{{ url_for('static', filename='js/jquery.magnific-popup.js') }}"></script>		
+		<!-- odometer js -->
+		<script src="{{ url_for('static', filename='js/slick.js') }}"></script>
+		<!-- wow js -->
+		<script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+		<!-- ajaxchimp js -->
+		<script src="{{ url_for('static', filename='js/ajaxchimp.min.js') }}"></script>
+		<!-- form-contact js -->
+		<script src="{{ url_for('static', filename='js/form-contact.js') }}"></script>
+		<!-- main js -->
+		<script src="{{ url_for('static', filename='js/main.js') }}"></script>	
+		
+</body>
+</html>
