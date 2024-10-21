@@ -1,9 +1,4 @@
 # ZeoTap Weather Forescast
- 
-Here's a sample README file for the ZeoTap Weather Forecast project:
-
-
-# ZeoTap Weather Forecast
 
 ZeoTap Weather Forecast is a web application that provides users with accurate and up-to-date weather forecasting information. Built using Python and Flask, this application retrieves and displays weather data in an intuitive interface.
 
